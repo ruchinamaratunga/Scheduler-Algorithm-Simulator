@@ -1,0 +1,14 @@
+.container-fluid{
+    width: 500px;
+
+}
+
+.container-fluid.inputs{
+    width: 800px;
+    margin-top: 20px;
+}
+
+.container-fluid.card {
+    
+    padding: 10 50 20 50px;
+}
