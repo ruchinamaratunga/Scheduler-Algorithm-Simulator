@@ -6,18 +6,14 @@
     <title>Scheduler</title>
 
     <style>
-        canvas{
-            border: 1px solid white;
-            background: red;
-            margin-bottom: 30px ;
-        }
-
-        .container {
-          text-align: center;
-        }
-
-        .container-fluid.card {
-            margin-top: 50px;
+        .my-container {
+          margin-top: 25px;
+          margin-bottom: 25px;
+          padding: 25px 25px 25px 25px;
+          border: 1px solid black;
+          background-color: #E1DBD9;
+          border-radius: 6px;
+          
         }
 
         #name {
@@ -35,13 +31,17 @@
         .card-body {
           margin: 0;
           padding: 0;
-          background-color:red;
+          /* background-color:red; */
         }
 
         #inputform {
           width: 700px
         }
 
+        .my-card {
+          margin: 5px;
+          margin-bottom: 30px;
+        }
 
     </style>
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -54,7 +54,7 @@
     </div>
 
     <!-- <div id = "name"></div> -->
-<div class="container">
+<div class="container my-container">
     <div class="container-fluid jumbotron" id="form1">
       <div class="content1">
         <label for="inputGroupSelect02">Number of Processes</label>
@@ -85,30 +85,26 @@
       
     </div>
 
-    <div class= "container-fluid row" id="form2">
-      <div id = "process">
+    <div class= "container my-container" id="form2">
+      <div class="row justify-content-center">
+          <div id = "process">
+          </div>
       </div>
-        <div id = "run" class="col-md-12 offset-md-10">
-            <input type='submit' class='btn btn-dark' id='run' value='Run'>
-        </div>
+      <div class="row justify-content-end">
+          <div id = "run" class="col-3">
+              <input type='submit' class='btn btn-dark' id='run' value='Run'>
+          </div>
+      </div>
     </div>
 
-    
-    <div class="container-fluid row" id="form3">
-      <div class="card" style="width: 4rem;">
-        <div class="card-body">
-          <p class="card-text">P1</p>
-        </div>
+    <div class="container my-container" id="form3" >
+      <div class="row justify-content-center">
+        <p id="message"></p>
       </div>
-      <div class="card" style="width: 4rem;">
-        <div class="card-body">
-          <p class="card-text">P1</p>
-        </div>
+      <div class="row" id="display">
+        <!-- <div class='card my-card' style='width: 4rem; background-color: red;'><div class='card-body'><p class='card-text'>P1</p></div></div> -->
       </div>
-
     </div>
-    
-
 
 
 
@@ -127,9 +123,10 @@
 
     <script src="lib/jquery-3.3.1.js"></script>
     <!-- <script src= "js/anime.min.js"></script> -->
-    <script src="js/Canvas.js"></script>
+    <!-- <script src="js/Canvas.js"></script> -->
     <script src ="js/bootstrap.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/Process.js"></script>
     <script src ="js/custom.js"></script>
     
 </body>

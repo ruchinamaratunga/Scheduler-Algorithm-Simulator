@@ -1,14 +1,61 @@
+function processCreation(inputlist) {
+    var processes = [];
+    for (index = 0; index < inputlist.length; ++index) {
+        let p = new Process(index,"P"+index,inputlist[index][0],inputlist[index][1],inputlist[index][2]);
+        processes.push(p);
+    }
+
+    return processes;
+}
+
+function scheduling(inputlist ,total_time = 0, time_quantum) {       
+    var processes = processCreation(inputlist);
+    var k = 0;
+    if(total_time == 0) {
+        $("#message").append("There is no Processes to Run");
+    }
+    while(total_time != 0 && k != 100) {
+        for(var i = 0; i < inputlist.length;i++) {
+            if(processes[i].burstTime >= time_quantum) {
+                processes[i].burstTime -= time_quantum;
+                total_time -= time_quantum;
+                for (var j = 0; j < time_quantum ; j++) {
+                    k++;
+                    console.log("hi");
+                    $("#display").append("<div class='card my-card' style='width: 4rem; background-color: "+processes[i].color+";'><div class='card-body'><p class='card-text'>"+processes[i].name+"</p></div></div>");
+                }
+            } else {
+                total_time -= processes[i].burstTime;
+                for(var j = 0; j < processes[i].burstTime ; j++) {
+                    k++;
+                    console.log("hi");
+                    $("#display").append("<div class='card my-card' style='width: 4rem; background-color: "+processes[i].color+";'><div class='card-body'><p class='card-text'>"+processes[i].name+"</p></div></div>");                    
+                }
+                processes[i].burstTime = 0;
+            }
+
+        }
+    }
+
+    // for(var i = 0; i < 20; i++) {
+    //     $("#display").append("<div class='card my-card' style='width: 4rem; background-color: #000;'><div class='card-body'><p class='card-text'>P1</p></div></div>");
+    // }
+
+}
+
+
 $(document).ready(function(){
 
     const content =  document.querySelector(".content1"); 
     var num_of_processes;
-    var time_quantum = document.getElementById("inputGroupSelect02").value;
+    var time_quantum; 
     $("#form2").hide();
-    $("#form3").show();
+    $("#form3").hide();
     $("#submit").on('click', {},submit);
     
     function submit(){
         num_of_processes = document.getElementById("inputGroupSelect01").value;
+        time_quantum = document.getElementById("inputGroupSelect02").value;
         var i;
         var process_code ="";
         for(i = 1;i < parseInt(num_of_processes)+1 ;i++) {
@@ -20,6 +67,7 @@ $(document).ready(function(){
         $("#form2").show();
    }; 
    var inputlist = [];
+   var total_time = 0;
    $("#run").on("click", {}, run);
    
    function run() {
@@ -28,8 +76,11 @@ $(document).ready(function(){
         var j = 1;
         for(j = 1; j < parseInt(num_of_processes)+1; j++) {
             var temp = [];
-            var temp_arrival_time = document.getElementById("at-"+j).value ;
+            document.getElementById("at-"+j).defaultValue = 0;
+            document.getElementById("bt-"+j).defaultValue = 0;
+            var temp_arrival_time = document.getElementById("at-"+j).value;
             var temp_burst_time = document.getElementById("bt-"+j).value;
+            total_time += parseInt(temp_burst_time);
             var temp_color = document.getElementById("cl-"+j).value;
             temp.push(temp_arrival_time);
             temp.push(temp_burst_time);
@@ -38,26 +89,10 @@ $(document).ready(function(){
         }
         $("#form2").hide();
         $("#form3").show();
-        console.log(inputlist);
-        var processlist = processCreation(inputlist);
-        console.log(processlist);
+ 
+        scheduling(inputlist, total_time, time_quantum);
    };
    
-    function processCreation(inputilst) {
-        var processes = [];
-        for (index = 0; index < inputlist.length; ++index) {
-            let p = new Process(index,"P"+index,inputlist[index][0],inputilst[index][1],inputilst[index][2]);
-            processes.append(p);
-        }
-
-        return processes;
-    }
-
-   function scheduling(inputlist) {
-        
-        
-        
-   }
 
 });
 
