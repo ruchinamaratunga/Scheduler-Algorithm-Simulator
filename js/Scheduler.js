@@ -3,7 +3,7 @@ class Scheduler {
 
     }
 
-    RoundRobin (readyQueue){
+    RoundRobin (inputlist){
         
     }
 }

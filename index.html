@@ -8,23 +8,54 @@
     <style>
         canvas{
             border: 1px solid white;
-            background: black;
+            background: red;
+            margin-bottom: 30px ;
         }
 
         .container {
-            height: 50vh ;
+          text-align: center;
         }
+
+        .container-fluid.card {
+            margin-top: 50px;
+        }
+
+        #name {
+          width: 50px;
+          height: 50px;
+          background-color: blue;
+        }
+
+        .box {
+          border: 1px solid black;
+          background-color: blue;
+          width: 25px;
+        }
+
+        .card-body {
+          margin: 0;
+          padding: 0;
+          background-color:red;
+        }
+
+        #inputform {
+          width: 700px
+        }
+
 
     </style>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
-    <canvas>
-        
-    </canvas>
 
-    <div class="container-fluid card">
+    <div>
+
+    </div>
+
+    <!-- <div id = "name"></div> -->
+<div class="container">
+    <div class="container-fluid jumbotron" id="form1">
       <div class="content1">
         <label for="inputGroupSelect02">Number of Processes</label>
         <div class="input-group mb-3">
@@ -53,12 +84,47 @@
       </div>
       
     </div>
-    <div class= "jumbotron">
-      <div id = "process"></div>
-        <div id = "run" class="float-right">
+
+    <div class= "container-fluid row" id="form2">
+      <div id = "process">
+      </div>
+        <div id = "run" class="col-md-12 offset-md-10">
             <input type='submit' class='btn btn-dark' id='run' value='Run'>
         </div>
     </div>
+
+    
+    <div class="container-fluid row" id="form3">
+      <div class="card" style="width: 4rem;">
+        <div class="card-body">
+          <p class="card-text">P1</p>
+        </div>
+      </div>
+      <div class="card" style="width: 4rem;">
+        <div class="card-body">
+          <p class="card-text">P1</p>
+        </div>
+      </div>
+
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
     <script src="lib/jquery-3.3.1.js"></script>
     <!-- <script src= "js/anime.min.js"></script> -->
     <script src="js/Canvas.js"></script>
